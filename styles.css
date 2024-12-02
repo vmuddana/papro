@@ -151,3 +151,58 @@ footer p {
     margin: 0;
     font-size: 1rem;
 }
+/* General Styles for Mobile */
+@media (max-width: 768px) {
+    .hero-section {
+        flex-direction: column; /* Stack content and image vertically */
+        align-items: center;
+        text-align: center; /* Center-align text for better readability */
+        padding: 20px;
+    }
+
+    .content {
+        max-width: 100%; /* Use full width on smaller screens */
+        padding-right: 0; /* Remove extra padding */
+    }
+
+    .image img {
+        max-width: 90%; /* Reduce image size for smaller screens */
+    }
+
+    .app-info-card {
+        display: flex;
+        flex-direction: column; /* Stack text and image vertically */
+        align-items: center; /* Center-align content */
+        text-align: center;
+        padding: 20px;
+    }
+
+    .app-info-card.reverse {
+        flex-direction: column; /* Ensure reverse cards also stack vertically */
+    }
+
+    .app-description {
+        order: 0; /* Keep text always at the top */
+        padding: 0; /* Remove side padding */
+        margin-bottom: 1rem; /* Add spacing below the text */
+    }
+
+    .app-screenshot {
+        order: 1; /* Ensure the image is always below the text */
+        flex: none;
+        margin-bottom: 0; /* Remove unnecessary spacing */
+    }
+
+    .download-btn {
+        margin: 20px auto; /* Add spacing and center the button */
+    }
+
+    .download-section {
+        margin: 20px auto;
+        text-align: center; /* Center-align download button at the bottom */
+    }
+
+    footer {
+        padding: 10px 20px; /* Add padding for smaller screens */
+    }
+}
