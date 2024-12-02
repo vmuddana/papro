@@ -1,0 +1,153 @@
+/* General Styles */
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background: #f8f8f8;
+    color: #333;
+}
+
+/* Hero Section */
+.hero-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 100vh;
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 5%;
+    gap: 30px; /* Adds space between text and image */
+}
+
+.content {
+    flex: 1;
+    max-width: 500px; /* Slightly smaller width to give the image more space */
+    padding-right: 20px;
+    text-align: left;
+}
+
+.content h1 {
+    font-size: 2.8rem;
+    margin-bottom: 1.5rem;
+    color: #2c3e50;
+}
+
+.content .tagline {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    color: #555;
+    line-height: 1.6;
+}
+
+.features {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 2rem;
+}
+
+.features li {
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+    line-height: 1.8;
+    color: #444;
+}
+
+.download-btn {
+    display: block;
+    text-align: center;
+    margin: 2rem auto 0;
+}
+
+.download-btn img {
+    width: 200px;
+    height: auto;
+    border-radius: 5px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+}
+
+.download-btn img:hover {
+    transform: scale(1.1);
+}
+
+.image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.image img {
+    max-width: 70%; /* Increased the size to take up more space */
+    height: auto;
+    border-radius: 15px;
+    object-fit: cover;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Card Section */
+.app-info-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 90%;
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.app-info-card.reverse {
+    flex-direction: row-reverse;
+}
+
+.app-screenshot {
+    flex: 0.4;
+    text-align: center;
+}
+
+.app-screenshot img {
+    max-width: 90%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.1);
+}
+
+.app-description {
+    flex: 0.6;
+    padding: 0 1rem;
+    text-align: left;
+}
+
+.app-description h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    color: #2c3e50;
+}
+
+.app-description p {
+    font-size: 1.2rem;
+    line-height: 1.5;
+    color: #555;
+}
+
+/* Download Section */
+.download-section {
+    text-align: center;
+    margin: 3rem 0;
+}
+
+/* Footer */
+footer {
+    background: #2c3e50;
+    color: #fff;
+    text-align: center;
+    padding: 1rem 0;
+}
+
+footer p {
+    margin: 0;
+    font-size: 1rem;
+}
