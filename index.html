@@ -4,16 +4,381 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Panic Attack Pro</title>
-    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* General Styles */
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background: #f8f8f8;
+            color: #333;
+            position: relative;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            min-height: 100vh;
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 5%;
+            gap: 30px; /* Adds space between text and image */
+        }
+
+        .content {
+            flex: 1;
+            max-width: 500px; /* Slightly smaller width to give the image more space */
+            padding-right: 20px;
+            text-align: left;
+        }
+
+        .content h1 {
+            font-size: 2.8rem;
+            margin-bottom: 1.5rem;
+            color: #2c3e50;
+        }
+
+        .content .tagline {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .features {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 2rem;
+        }
+
+        .features li {
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: #444;
+            position: relative;
+            padding-left: 25px; /* Space for checkmarks */
+        }
+        
+        .features li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #4682B4; /* Soft blue */
+            font-weight: bold;
+        }
+
+        .download-btn {
+            display: block;
+            text-align: center;
+            margin: 2rem auto 0;
+        }
+
+        .download-btn img {
+            width: 200px;
+            height: auto;
+            border-radius: 5px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .download-btn img:hover {
+            transform: scale(1.05);
+        }
+
+        .image {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .image img {
+            max-width: 80%; /* Increased the size to take up more space */
+            height: auto;
+            border-radius: 15px;
+            object-fit: cover;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Card Section */
+        .app-info-card {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 90%;
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background: #ffffff;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s ease; /* Subtle hover effect */
+        }
+        
+        .app-info-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .app-info-card.reverse {
+            flex-direction: row-reverse;
+        }
+
+        .app-screenshot {
+            flex: 0.4;
+            text-align: center;
+        }
+
+        .app-screenshot img {
+            max-width: 90%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .app-description {
+            flex: 0.6;
+            padding: 0 1rem;
+            text-align: left;
+        }
+
+        .app-description h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: #2c3e50;
+        }
+
+        .app-description p {
+            font-size: 1.2rem;
+            line-height: 1.5;
+            color: #555;
+        }
+
+        /* Situation list styling */
+        .situation-list p {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 0.8rem;
+        }
+        
+        .situation-list p:before {
+            content: "-";
+            position: absolute;
+            left: 0;
+        }
+
+        /* Download Section */
+        .download-section {
+            text-align: center;
+            margin: 3rem 0;
+            padding: 2rem 0;
+            background-color: #f0f5fa; /* Light blue background */
+        }
+
+        /* Footer */
+        footer {
+            background: #2c3e50;
+            color: #fff;
+            text-align: center;
+            padding: 1rem 0;
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 1rem;
+        }
+        
+        /* Footer links */
+        footer .links {
+            margin-bottom: 1rem;
+        }
+        
+        footer .links a {
+            color: #fff;
+            margin: 0 10px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            opacity: 0.8;
+            cursor: pointer;
+        }
+        
+        footer .links a:hover {
+            opacity: 1;
+            text-decoration: underline;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 999;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            width: 80%;
+            max-width: 600px;
+        }
+
+        .close-modal {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close-modal:hover,
+        .close-modal:focus {
+            color: #000;
+            text-decoration: none;
+        }
+
+        .modal-header {
+            border-bottom: 1px solid #eee;
+            padding-bottom: 15px;
+            margin-bottom: 20px;
+        }
+
+        .modal-title {
+            margin: 0;
+            color: #2c3e50;
+            font-size: 1.5rem;
+        }
+
+        .modal-body {
+            margin-bottom: 20px;
+        }
+
+        .contact-info {
+            background-color: #f9f9f9;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 15px 0;
+        }
+
+        .contact-label {
+            font-weight: bold;
+            display: inline-block;
+            width: 80px;
+        }
+
+        .policy-container {
+            max-height: 300px;
+            overflow-y: auto;
+            padding: 0 10px;
+            margin: 15px 0;
+            border: 1px solid #eee;
+            border-radius: 5px;
+        }
+
+        .policy-content h3 {
+            margin-top: 15px;
+            color: #2c3e50;
+        }
+
+        /* General Styles for Mobile */
+        @media (max-width: 768px) {
+            .hero-section {
+                flex-direction: column; /* Stack content and image vertically */
+                align-items: center;
+                text-align: center; /* Center-align text for better readability */
+                padding: 20px;
+            }
+
+            .content {
+                max-width: 100%; /* Use full width on smaller screens */
+                padding-right: 0; /* Remove extra padding */
+            }
+            
+            .features li {
+                padding-left: 0; /* Remove padding for checkmarks */
+            }
+            
+            .features li:before {
+                position: static;
+                margin-right: 10px;
+            }
+
+            .image img {
+                max-width: 90%; /* Reduce image size for smaller screens */
+            }
+
+            .app-info-card {
+                display: flex;
+                flex-direction: column; /* Stack text and image vertically */
+                align-items: center; /* Center-align content */
+                text-align: center;
+                padding: 20px;
+            }
+
+            .app-info-card.reverse {
+                flex-direction: column; /* Ensure reverse cards also stack vertically */
+            }
+
+            .app-description {
+                order: 0; /* Keep text always at the top */
+                padding: 0; /* Remove side padding */
+                margin-bottom: 1rem; /* Add spacing below the text */
+            }
+
+            .app-screenshot {
+                order: 1; /* Ensure the image is always below the text */
+                flex: none;
+                margin-bottom: 0; /* Remove unnecessary spacing */
+            }
+            
+            .situation-list p {
+                padding-left: 0;
+            }
+            
+            .situation-list p:before {
+                position: static;
+                margin-right: 5px;
+            }
+
+            .download-btn {
+                margin: 20px auto; /* Add spacing and center the button */
+            }
+
+            .download-section {
+                margin: 20px auto;
+                text-align: center; /* Center-align download button at the bottom */
+            }
+
+            footer {
+                padding: 10px 20px; /* Add padding for smaller screens */
+            }
+
+            .modal-content {
+                width: 90%;
+                margin: 20% auto;
+                padding: 15px;
+            }
+        }
+    </style>
 </head>
 <body>
     <div class="hero-section">
         <div class="content">
             <h1>Panic Attack Pro</h1>
-            <p class="tagline">We will help you win over your panic attacks.</p>
+            <p class="tagline">We will help you overcome your panic attacks.</p>
             <ul class="features">
                 <li>Research-backed and doctor-approved tips and exercises to help you beat anxiety and panic.</li>
-            
+                <li>Quick 5-minute daily techniques to reduce stress and build resilience.</li>
+                <li>Personalized support for panic attacks, anxiety, and everyday stress.</li>
             </ul>
             <a href="https://apps.apple.com" class="download-btn">
                 <img src="download.png" alt="Download on the App Store">
@@ -32,23 +397,26 @@
             <h2>Just 5 minutes a day</h2>
             <p>5 minutes of daily exercises to bring down your anxiety to base level.</p>
             <p>Made with extensive research—only those techniques proven to make a difference.</p>
+            <p>Track your progress and see how your anxiety levels decrease over time.</p>
         </div>
     </div>
 
     <div class="app-info-card reverse">
         <div class="app-description">
             <h2>For all situations</h2>
-            <p>- support when you are having a panic attack</p>
-            <p>- support when you are anxious</p>
-            <p>- daily practice to prevent anxiety and stress</p>
+            <div class="situation-list">
+                <p>Support when you are having a panic attack</p>
+                <p>Support when you are anxious</p>
+                <p>Daily practice to prevent anxiety and stress</p>
+                <p>Evening routines to help with sleep and worry</p>
+            </div>
         </div>
         <div class="app-screenshot">
             <img src="img2.png" alt="App screenshot">
         </div>
     </div>
 
-  
-<div class="download-section">
+    <div class="download-section">
         <h2>Start feeling better today</h2>
         <a href="https://apps.apple.com" class="download-btn">
             <img src="download.png" alt="Download on the App Store">
@@ -115,7 +483,7 @@
                         <p>Our app may use third-party services for analytics and crash reporting.</p>
                         
                         <h3>Your Privacy Rights</h3>
-                        <p>You have the right to access, correct, or delete your personal information. To exercise these rights, please contact us at support@panicattackpro.com.</p>
+                        <p>You have the right to access, correct, or delete your personal information. To exercise these rights, please contact us at privacy@panicattackpro.com.</p>
                         
                         <h3>Children's Privacy</h3>
                         <p>Our app is not intended for use by children under the age of 13.</p>
@@ -157,7 +525,7 @@
                         <p>We reserve the right to make changes to the app and these Terms of Service at any time.</p>
                         
                         <h3>Governing Law</h3>
-                        <p>These Terms shall be governed by and construed in accordance with the laws of Quebec, Canada.</p>
+                        <p>These Terms shall be governed by and construed in accordance with the laws of [Your Country/State].</p>
                         
                         <p>Last updated: March 15, 2025</p>
                     </div>
@@ -220,5 +588,3 @@
     </script>
 </body>
 </html>
-
-
