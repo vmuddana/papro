@@ -47,19 +47,178 @@
         </div>
     </div>
 
-    <div class="download-section">
+  
+<div class="download-section">
+        <h2>Start feeling better today</h2>
         <a href="https://apps.apple.com" class="download-btn">
             <img src="download.png" alt="Download on the App Store">
         </a>
     </div>
 
+    <!-- Footer -->
     <footer>
+        <div class="links">
+            <a id="supportLink">Support</a>
+            <a id="privacyLink">Privacy Policy</a>
+            <a id="termsLink">Terms</a>
+        </div>
         <p>&copy; <span id="current-year"></span> Panic Attack Pro. All rights reserved.</p>
     </footer>
 
+    <!-- Support Modal -->
+    <div id="supportModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="close-modal">&times;</span>
+                <h2 class="modal-title">Support</h2>
+            </div>
+            <div class="modal-body">
+                <p>If you're experiencing any issues with Panic Attack Pro or have questions about how to use specific features, please contact us.</p>
+                
+                <div class="contact-info">
+                    <p><span class="contact-label">Email:</span> support@panicattackpro.com</p>
+                    <p><span class="contact-label">Response:</span> Within 24 hours (Monday-Friday)</p>
+                </div>
+                
+                <p>When contacting support, please include:</p>
+                <ul>
+                    <li>A description of the issue</li>
+                    <li>Your device model and iOS version</li>
+                    <li>Screenshots if relevant</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Privacy Policy Modal -->
+    <div id="privacyModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="close-modal">&times;</span>
+                <h2 class="modal-title">Privacy Policy</h2>
+            </div>
+            <div class="modal-body">
+                <p>At Panic Attack Pro, we take your privacy seriously. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our mobile application.</p>
+                
+                <div class="policy-container">
+                    <div class="policy-content">
+                        <h3>Information We Collect</h3>
+                        <p>We may collect personal identification information, health and wellness data, and device usage data to provide and improve our services.</p>
+                        
+                        <h3>How We Use Your Information</h3>
+                        <p>We use the information to personalize your experience, improve our app, provide customer support, and track your progress.</p>
+                        
+                        <h3>Data Storage and Security</h3>
+                        <p>Most of your personal information is stored locally on your device and is not transmitted to our servers unless explicitly initiated by you (such as when contacting support).</p>
+                        
+                        <h3>Third-Party Services</h3>
+                        <p>Our app may use third-party services for analytics and crash reporting.</p>
+                        
+                        <h3>Your Privacy Rights</h3>
+                        <p>You have the right to access, correct, or delete your personal information. To exercise these rights, please contact us at support@panicattackpro.com.</p>
+                        
+                        <h3>Children's Privacy</h3>
+                        <p>Our app is not intended for use by children under the age of 13.</p>
+                        
+                        <h3>Changes to This Policy</h3>
+                        <p>We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page.</p>
+                        
+                        <p>Last updated: March 15, 2025</p>
+                    </div>
+                </div>
+                
+                <p>For any privacy-related questions, please contact: support@panicattackpro.com</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Terms of Service Modal -->
+    <div id="termsModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="close-modal">&times;</span>
+                <h2 class="modal-title">Terms of Service</h2>
+            </div>
+            <div class="modal-body">
+                <p>Please read these Terms of Service carefully before using the Panic Attack Pro mobile application.</p>
+                
+                <div class="policy-container">
+                    <div class="policy-content">
+                        <h3>Use License</h3>
+                        <p>We grant you a limited, non-exclusive, non-transferable license to use Panic Attack Pro for your personal, non-commercial purposes.</p>
+                        
+                        <h3>Disclaimer</h3>
+                        <p>The app is not a substitute for professional medical advice, diagnosis, or treatment. Always seek the advice of your physician or qualified health provider with any questions you may have regarding a medical condition.</p>
+                        
+                        <h3>Limitations</h3>
+                        <p>In no event shall Panic Attack Pro or its suppliers be liable for any damages arising out of the use or inability to use the app.</p>
+                        
+                        <h3>Revisions and Errata</h3>
+                        <p>We reserve the right to make changes to the app and these Terms of Service at any time.</p>
+                        
+                        <h3>Governing Law</h3>
+                        <p>These Terms shall be governed by and construed in accordance with the laws of Quebec, Canada.</p>
+                        
+                        <p>Last updated: March 15, 2025</p>
+                    </div>
+                </div>
+                
+                <p>For questions regarding our Terms of Service, please contact: support@panicattackpro.com</p>
+            </div>
+        </div>
+    </div>
+
     <script>
-        // Dynamically set the current year in the footer
+        // Set current year
         document.getElementById("current-year").textContent = new Date().getFullYear();
+        
+        // Modal functionality
+        const supportModal = document.getElementById("supportModal");
+        const privacyModal = document.getElementById("privacyModal");
+        const termsModal = document.getElementById("termsModal");
+        
+        const supportLink = document.getElementById("supportLink");
+        const privacyLink = document.getElementById("privacyLink");
+        const termsLink = document.getElementById("termsLink");
+        
+        const closeButtons = document.getElementsByClassName("close-modal");
+        
+        // Open modals
+        supportLink.onclick = function() {
+            supportModal.style.display = "block";
+        }
+        
+        privacyLink.onclick = function() {
+            privacyModal.style.display = "block";
+        }
+        
+        termsLink.onclick = function() {
+            termsModal.style.display = "block";
+        }
+        
+        // Close modals when clicking X
+        for (let i = 0; i < closeButtons.length; i++) {
+            closeButtons[i].onclick = function() {
+                supportModal.style.display = "none";
+                privacyModal.style.display = "none";
+                termsModal.style.display = "none";
+            }
+        }
+        
+        // Close modals when clicking outside
+        window.onclick = function(event) {
+            if (event.target == supportModal) {
+                supportModal.style.display = "none";
+            }
+            if (event.target == privacyModal) {
+                privacyModal.style.display = "none";
+            }
+            if (event.target == termsModal) {
+                termsModal.style.display = "none";
+            }
+        }
     </script>
 </body>
 </html>
+
+
